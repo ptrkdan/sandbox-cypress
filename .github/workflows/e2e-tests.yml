@@ -25,10 +25,9 @@ jobs:
         run: npm ci
 
       - name: Run Cypress
-        id: cypress
         run: |
-          npm run cypress:run --env DATA_FILE_NAME=${{ inputs.test-data-filename }} > cypress-logs.txt
-          echo "::set-output name=logs-path::cypress-logs.txt"
+          npm run cypress:run --env DATA_FILE_NAME=${{ inputs.test-data-filename }}
+        
       
       - name: Get current time
         uses: josStorer/get-current-time@v2.0.1
@@ -40,5 +39,5 @@ jobs:
       - name: Upload logs as artifact
         uses: actions/upload-artifact@v3
         with:
-          name: ${{ steps.current-time.outputs.formattedTime }}-cypress-logs.txt
-          path: ${{ steps.cypress.outputs.logs-path }}
+          name: ${{ steps.current-time.outputs.formattedTime }}-cypress-logs
+          path: ${{ github.workspace }}/cypress/results/

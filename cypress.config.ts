@@ -3,6 +3,10 @@ import { defineConfig } from 'cypress';
 export default defineConfig({
 	projectId: '29mpmo',
 	watchForFileChanges: false,
+	reporter: 'mochawesome',
+	reporterOptions: {
+		reportDir: 'cypress/results',
+	},
 	e2e: {
 		// baseUrl: 'https://engineering.monstar-lab.com/en/',
 		baseUrl: 'https://example.cypress.io/',
