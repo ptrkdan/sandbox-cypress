@@ -1,8 +1,7 @@
 // import { blogPosts } from '../fixtures/blog-posts';
 
 describe('Cypress Kitchen Sink', () => {
-  const commands = Cypress.env('commands');
-  console.log(commands);
+	const commands = Cypress.env('commands');
 	commands.forEach((command) => {
 		context(command.title, () => {
 			beforeEach(() => {
