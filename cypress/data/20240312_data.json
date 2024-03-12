@@ -1,0 +1,16 @@
+{
+  "commands": [
+		{
+			"title": "Querying",
+      "link": "/commands/querying"
+		},
+		{
+			"title": "Traversal",
+			"link": "/commands/traversal"
+		},
+		{
+			"title": "Actions",
+			"link": "/commands/actions"
+		}
+	]
+}
