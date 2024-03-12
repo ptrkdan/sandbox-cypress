@@ -30,8 +30,8 @@ jobs:
 
       - name: Run Cypress with specific fixture
         if: ${{ inputs.test-data-filename != '' }}
-        run: npm run cypress:run --record --key ${{ secrets.CYPRESS_RECORD_KEY }} --env DATA_FILE_NAME=${{ inputs.test-data-filename }}
+        run: npm run cypress:run --record --key ${{ secrets.CYPRESS_RECORD_KEY }} --parallel --env DATA_FILE_NAME=${{ inputs.test-data-filename }}
 
       - name: Run Cypress with default fixture
         if: ${{ inputs.test-data-filename == '' }}
-        run: npm run cypress:run --record --key ${{ secrets.CYPRESS_RECORD_KEY }}
+        run: npm run cypress:run --record --key ${{ secrets.CYPRESS_RECORD_KEY }} --parallel
