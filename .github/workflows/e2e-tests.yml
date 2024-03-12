@@ -26,7 +26,9 @@ jobs:
 
       - name: Run Cypress
         run: |
-          npm run cypress:run --env DATA_FILE_NAME=${{ inputs.test-data-filename }}
+          npm run cypress:run --env DATA_FILE_NAME=${{ inputs.test-data-filename }} &&
+          npx mochawesome-merge ${{ github.workspace }}/cypress/results/*.json > e2e-results.json &&
+          npx marge e2e-results.json -o ${{ github.workspace }}/cypress/results/out
         
       
       - name: Get current time
@@ -40,4 +42,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: ${{ steps.current-time.outputs.formattedTime }}-cypress-logs
-          path: ${{ github.workspace }}/cypress/results/
+          path: ${{ github.workspace }}/cypress/results/out/

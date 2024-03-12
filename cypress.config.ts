@@ -6,6 +6,7 @@ export default defineConfig({
 	reporter: 'mochawesome',
 	reporterOptions: {
 		reportDir: 'cypress/results',
+		overwrite: false,
 	},
 	e2e: {
 		// baseUrl: 'https://engineering.monstar-lab.com/en/',
