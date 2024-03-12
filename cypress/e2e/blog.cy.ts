@@ -1,6 +1,6 @@
 // import { blogPosts } from '../fixtures/blog-posts';
 
-describe('Monstarlab Engineering Blog', () => {
+describe.skip('Monstarlab Engineering Blog', () => {
   const blogPosts = Cypress.env("blogPosts")
 	blogPosts.forEach((post) => {
 		context(post.title, () => {

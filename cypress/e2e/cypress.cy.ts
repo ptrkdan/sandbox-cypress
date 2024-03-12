@@ -1,8 +1,13 @@
-// import { blogPosts } from '../fixtures/blog-posts';
-
 describe('Cypress Kitchen Sink', () => {
-	const commands = Cypress.env('commands');
-	commands.forEach((command) => {
+	const dataFileName = Cypress.env('DATA_FILE_NAME');
+	const data = require('../fixtures/' + dataFileName) as {
+		commands: {
+			title: string;
+			link: string;
+		}[];
+	};
+
+	data.commands.forEach((command) => {
 		context(command.title, () => {
 			beforeEach(() => {
 				cy.visit(command.link);

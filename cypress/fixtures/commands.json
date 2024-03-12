@@ -1,8 +1,8 @@
 {
-  "commands": [
+	"commands": [
 		{
 			"title": "Querying",
-      "link": "/commands/querying"
+			"link": "/commands/querying"
 		},
 		{
 			"title": "Traversal",
