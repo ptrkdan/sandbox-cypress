@@ -4,12 +4,8 @@ on:
   workflow_dispatch:
     inputs:
       test-data-filename:
-        description: 'Filename stored in `cypress/data/` to be used as Cypress variables'
+        description: 'Test variable file name'
         required: true
-      branch-name:
-        description: 'Target branch name'
-        required: true
-        default: 'main'
 
 jobs:
   run-tests:
@@ -18,8 +14,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-        with:
-          ref: ${{ inputs.branch-name }}
 
       - name: Use Node.js 16
         uses: actions/setup-node@v3
