@@ -11,9 +11,14 @@ jobs:
   run-tests:
     runs-on: ubuntu-latest
 
+    strategy:
+      fail-fast: false # https://github.com/cypress-io/github-action/issues/48
+      matrix:
+        containers: [1, 2] # Uses 2 parallel instances
+
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Use Node.js 18
         uses: actions/setup-node@v3
@@ -25,10 +30,8 @@ jobs:
 
       - name: Run Cypress with specific fixture
         if: ${{ inputs.test-data-filename != '' }}
-        run: npm run cypress:run --env DATA_FILE_NAME=${{ inputs.test-data-filename }}
+        run: npm run cypress:run --record --key ${{ secrets.CYPRESS_RECORD_KEY }} --env DATA_FILE_NAME=${{ inputs.test-data-filename }}
 
       - name: Run Cypress with default fixture
         if: ${{ inputs.test-data-filename == '' }}
-        run: npm run cypress:run
-
-      
+        run: npm run cypress:run --record --key ${{ secrets.CYPRESS_RECORD_KEY }}
