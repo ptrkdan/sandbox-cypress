@@ -38,6 +38,7 @@ jobs:
 
       - name: Get current time
         uses: josStorer/get-current-time@v2.0.1
+        if: always()
         id: current-time
         with:
           format: YYYYMMDDHHmmss
@@ -45,6 +46,7 @@ jobs:
 
       - name: Upload logs as artifact
         uses: actions/upload-artifact@v3
+        if: always()
         with:
           name: ${{ steps.current-time.outputs.formattedTime }}-cypress-logs
           path: ${{ github.workspace }}/cypress/results/out/
