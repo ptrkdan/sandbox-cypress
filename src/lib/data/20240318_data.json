@@ -1,0 +1,54 @@
+{
+	"sections": [
+		{
+			"name": "Section A",
+      "url": "/sectionA/",
+			"services": [
+				{
+					"name": "Service A-1",
+					"number": 1
+				},
+				{
+					"name": "Service A-2",
+					"number": 2
+				},
+				{
+					"name": "Service A-3",
+					"number": 3
+				}
+			]
+		},
+		{
+			"name": "Section B",
+			"url": "/sectionB/",
+			"services": [
+				{
+					"name": "Service B-4",
+					"number": 4
+				},
+				{
+					"name": "Service B-5",
+					"number": 5
+				},
+				{
+					"name": "Service B-6",
+					"number": 6
+				}
+			]
+		},
+		{
+			"name": "Section C",
+			"url": "/sectionC/",
+			"services": [
+				{
+					"name": "Service C-1",
+					"number": 1
+				},
+				{
+					"name": "Service C-2",
+					"number": 2
+				}
+			]
+		}
+	]
+}

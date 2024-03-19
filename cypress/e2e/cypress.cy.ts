@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 describe('Cypress Kitchen Sink', () => {
 	const dataFileName = Cypress.env('DATA_FILE_NAME');
 	const data = require('../fixtures/' + dataFileName) as {
