@@ -10,7 +10,10 @@
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --check . && eslint .",
 		"format": "prettier --write .",
-		"cypress:run": "cypress run",
+		"clean:reports": "rm -R -f cypress/results",
+		"generate:report": "mochawesome-merge ./cypress/results/*.json > ./cypress/results/merged/merged.json && marge ./cypress/results/merged/merged.json -f report -o ./cypress/results/out --inline",
+		"precypress:run": "npm run clean:reports",
+		"cypress:run": "cypress run -s '**/sections/*.cy.ts'",
 		"cypress:open": "cypress open"
 	},
 	"devDependencies": {
@@ -18,9 +21,11 @@
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
 		"@types/eslint": "^8.56.0",
+		"@types/mochawesome": "^6.2.4",
 		"@typescript-eslint/eslint-plugin": "^7.0.0",
 		"@typescript-eslint/parser": "^7.0.0",
 		"cypress": "^13.6.6",
+		"cypress-mochawesome-reporter": "^3.8.2",
 		"eslint": "^8.56.0",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.35.1",
