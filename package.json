@@ -13,7 +13,7 @@
 		"clean:reports": "rm -R -f cypress/results",
 		"generate:report": "mochawesome-merge ./cypress/results/*.json > ./cypress/results/merged/merged.json && marge ./cypress/results/merged/merged.json -f report -o ./cypress/results/out --inline",
 		"precypress:run": "npm run clean:reports",
-		"cypress:run": "cypress run -s '**/sections/*.cy.ts'",
+		"cypress:run": "cypress run --no-runner-ui -s '**/sections/*.cy.ts'",
 		"cypress:open": "cypress open"
 	},
 	"devDependencies": {
