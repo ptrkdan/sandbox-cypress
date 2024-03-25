@@ -32,7 +32,7 @@ jobs:
 
       - name: Run Cypress
         run: |
-          npm run cypress:run --env DATA_FILE_NAME=${{ inputs.test-data-filename }}
+          npm run cypress:run -- --env DATA_FILE_NAME=${{ inputs.test-data-filename }}
 
       - name: Get current time
         uses: josStorer/get-current-time@v2.0.1
