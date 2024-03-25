@@ -2,7 +2,7 @@ import { sections } from '../../fixtures/section-data';
 import { testCommonCases } from './common';
 
 describe(
-	'Section C',
+	'Section CX',
 	{
 		baseUrl: 'http://localhost:5173'
 	},
