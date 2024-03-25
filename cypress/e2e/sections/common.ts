@@ -1,6 +1,5 @@
 export const checkSectionName = (sectionName: string) => {
 	cy.get('[data-cy="section-name"]').should('have.text', sectionName);
-	// Get an h1 element with the data-cy attribute set to "section-title" and check its text
 };
 
 export const openModal = (index: number) => {
@@ -9,15 +8,31 @@ export const openModal = (index: number) => {
 };
 
 export const checkServiceName = async (serviceName: string, index: number) => {
-	cy.get('button[data-cy="show-service"]').eq(index).should('contain', serviceName);
+	// cy.get('button[data-cy="show-service"]').eq(index).should('contain', serviceName);
+	cy.get('button[data-cy="show-service"]')
+		.eq(index)
+		.invoke('text')
+		.then((text) => {
+			expect(text, `サービス名が「${text}」になっています`).to.contain(serviceName);
+		});
 };
 
 export const checkServiceNameInModal = (serviceName: string) => {
-	cy.get('.modal [data-cy="service-name"]').should('contain', serviceName);
+	// cy.get('.modal [data-cy="service-name"]').should('contain', serviceName);
+	cy.get('.modal [data-cy="service-name"]')
+		.invoke('text')
+		.then((text) => {
+			expect(text, `モーダル内のサービス名が「${text}」になっています`).to.contain(serviceName);
+		});
 };
 
 export const checkServiceNumberInModal = (serviceNumber: number) => {
-	cy.get('.modal [data-cy="service-number"]').should('contain', serviceNumber);
+	// cy.get('.modal [data-cy="service-number"]').should('contain', serviceNumber);
+	cy.get('.modal [data-cy="service-number"]')
+		.invoke('text')
+		.then((text) => {
+			expect(text, `モーダル内のサービス番号が「${text}」になっています`).to.contain(serviceNumber);
+		});
 };
 
 export const testCommonCases = (section: {
