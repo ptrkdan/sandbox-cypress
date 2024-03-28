@@ -46,5 +46,5 @@ jobs:
         uses: actions/upload-artifact@v3
         if: always()
         with:
-          name: ${{ steps.current-time.outputs.formattedTime }}-cypress-logs
-          path: ${{ github.workspace }}/cypress/results/
+          name: ${{ steps.current-time.outputs.formattedTime }}-cypress-report
+          path: ${{ github.workspace }}/cypress/reports/csv/

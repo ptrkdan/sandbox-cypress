@@ -1,29 +1,26 @@
 import { defineConfig } from 'cypress';
-import cypressMochawesomeReporterPlugin from 'cypress-mochawesome-reporter/plugin';
+import csvReporterPlugin from './cypress/plugins/csv-reporter';
 
 export default defineConfig({
 	projectId: '29mpmo',
 	watchForFileChanges: false,
-	reporter: 'cypress-mochawesome-reporter',
+	reporter: 'cypress-multi-reporters',
 	reporterOptions: {
-    reportDir: 'cypress/results',
-    inlineAssets: true,
-    embedScreenshots: true,
+		configFile: 'cypress-reporter.json'
 	},
-	screenshotsFolder: 'cypress/results/assets',
+	screenshotsFolder: 'cypress/reports/screenshots',
 	retries: {
 		runMode: 1,
 		openMode: 0
 	},
 	e2e: {
-		// baseUrl: 'https://engineering.monstar-lab.com/en/',
 		baseUrl: 'https://example.cypress.io/',
 		env: {
 			DATA_FILE_NAME: 'commands.json'
 		},
 		setupNodeEvents(on, config) {
 			// implement node event listeners here
-			cypressMochawesomeReporterPlugin(on);
+      csvReporterPlugin(on, config);
 		},
 		excludeSpecPattern: ['**/cypress/e2e/blog.cy.ts']
 	}

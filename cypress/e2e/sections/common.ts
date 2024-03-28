@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 export const checkSectionName = (sectionName: string) => {
 	cy.get('[data-cy="section-name"]').should('have.text', sectionName);
 };
@@ -45,10 +47,11 @@ export const testCommonCases = (section: {
 		cy.wait(500); // Required for svelte to fully load the page
 	});
 
-	it(`スケション名として「${section.name}」が表示されること`, () => {
-		checkSectionName(section.name);
+	context(section.name, () => {
+		it(`スケション名として「${section.name}」が表示されること`, () => {
+			checkSectionName(section.name);
+		});
 	});
-
 	section.services.forEach((service, index) => {
 		context(service.name, () => {
 			it(`サービス名として「${service.name}」が表示されること`, () => {
