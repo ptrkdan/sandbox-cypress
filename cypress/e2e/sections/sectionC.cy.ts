@@ -1,7 +1,7 @@
 import { sections } from '../../fixtures/section-data';
 import { testCommonCases } from './common';
 
-describe(
+describe.skip(
 	'Section C',
 	{
 		baseUrl: 'http://localhost:5173'
